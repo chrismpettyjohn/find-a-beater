@@ -1,4 +1,5 @@
 import { useVehicle } from "../../contexts/VehicleContext";
+import { formatNumber } from "../../hooks/formatNumber";
 import { useVehicleProblems } from "../../hooks/useVehicle";
 
 export function VehicleProblems() {
@@ -18,7 +19,7 @@ export function VehicleProblems() {
                         <tr key={`issue_${_.issue}`}>
                             <td>{_.issue}</td>
                             <td>{_.probability * 100}%</td>
-                            <td>${_.cost}</td>
+                            <td>${formatNumber(_.cost, 0)}</td>
                         </tr>
                     ))
                 }

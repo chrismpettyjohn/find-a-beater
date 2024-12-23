@@ -3,7 +3,7 @@ import { useVehicleTestimonies } from "../../hooks/useVehicle";
 
 export function VehicleTestimonials() {
     const { selectedVehicle } = useVehicle();
-    const testimonials = useVehicleTestimonies({ make: selectedVehicle?.make ?? '', model: selectedVehicle?.model ?? '', year: selectedVehicle?.year ?? 0, prompt })
+    const testimonials = useVehicleTestimonies({ make: selectedVehicle?.make ?? '', model: selectedVehicle?.model ?? '', year: selectedVehicle?.year ?? 0 })
     return (
         <div className="section testimonials-section" style={{ maxHeight: 400, overflowY: 'auto' }}>
             <h2 className="section-title">Owner Testimonials</h2>

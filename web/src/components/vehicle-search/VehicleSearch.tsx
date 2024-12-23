@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AsyncSelect from 'react-select/async';
 import { useVehicle } from '../../contexts/VehicleContext';
 import { searchVehicles } from '../../services/mockVehicleApi';
-import type { GroupBase, OptionProps, SingleValue } from 'react-select';
+import type { SingleValue } from 'react-select';
 
 interface Vehicle {
   id: string;
@@ -51,9 +51,9 @@ export const VehicleSearch = () => {
     }),
     option: (base: any, state: { isFocused: boolean; isSelected: boolean }) => ({
       ...base,
-      backgroundColor: state.isSelected 
+      backgroundColor: state.isSelected
         ? 'var(--accent)'
-        : state.isFocused 
+        : state.isFocused
           ? 'var(--bg-primary)'
           : 'var(--bg-secondary)',
       color: 'var(--text-primary)',

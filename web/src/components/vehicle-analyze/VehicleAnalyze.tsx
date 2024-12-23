@@ -6,6 +6,7 @@ export function VehicleAnalyze() {
     const [prompt, setPrompt] = useState('');
     const { selectedVehicle } = useVehicle();
     const analysis = useVehicleAnalysis({ make: selectedVehicle?.make ?? '', model: selectedVehicle?.model ?? '', year: selectedVehicle?.year ?? 0, prompt })
+
     const onChangePrompt = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
         setPrompt(event.currentTarget.value ?? '');
     }, [setPrompt]);
