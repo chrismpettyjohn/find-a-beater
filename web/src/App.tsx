@@ -7,11 +7,11 @@ import { VehicleSafety } from './components/vehicle-safety/VehicleSafety'
 import { VehicleSpecs } from './components/vehicle-specs/VehicleSpecs'
 import { VehicleTestimonials } from './components/vehicle-testimonials/VehicleTestimonials'
 import { VehicleValue } from './components/vehicle-value/VehicleValue'
+import { VehicleProvider } from './contexts/VehicleContext'
 
-function App() {
+function AppContent() {
   return (
     <SiteLayout>
-      <h1 className="car-title">2018 Toyota Camry SE</h1>
       <VehicleValue />
       <div className="main-grid">
         <VehicleImages />
@@ -22,7 +22,15 @@ function App() {
         <VehicleTestimonials />
       </div>
     </SiteLayout>
-  )
+  );
+}
+
+function App() {
+  return (
+    <VehicleProvider>
+      <AppContent />
+    </VehicleProvider>
+  );
 }
 
 export default App

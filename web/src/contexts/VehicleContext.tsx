@@ -1,9 +1,11 @@
-import { createContext, useState, useContext, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface Vehicle {
+  id: string;
   make: string;
   model: string;
   year: number;
+  label: string;
 }
 
 interface VehicleContextType {
@@ -13,43 +15,20 @@ interface VehicleContextType {
 
 const VehicleContext = createContext<VehicleContextType | undefined>(undefined);
 
-export function VehicleProvider({ children }: { children: ReactNode }) {
+export const VehicleProvider = ({ children }: { children: ReactNode }) => {
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
 
-  const value = {
-    selectedVehicle,
-    setSelectedVehicle,
-  };
-
   return (
-    <VehicleContext.Provider value={value}>
+    <VehicleContext.Provider value={{ selectedVehicle, setSelectedVehicle }}>
       {children}
     </VehicleContext.Provider>
   );
-}
+};
 
-export function useVehicleContext() {
+export const useVehicle = () => {
   const context = useContext(VehicleContext);
   if (context === undefined) {
-    throw new Error('useVehicleContext must be used within a VehicleProvider');
+    throw new Error('useVehicle must be used within a VehicleProvider');
   }
   return context;
-}
-
-export function useVehicle() {
-  const { selectedVehicle, setSelectedVehicle } = useVehicleContext();
-
-  const selectVehicle = (make: string, model: string, year: number) => {
-    setSelectedVehicle({ make, model, year });
-  };
-
-  const clearSelection = () => {
-    setSelectedVehicle(null);
-  };
-
-  return {
-    selectedVehicle,
-    selectVehicle,
-    clearSelection,
-  };
-}
+};

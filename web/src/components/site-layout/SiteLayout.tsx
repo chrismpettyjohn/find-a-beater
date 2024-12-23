@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { VehicleSearch } from '../vehicle-search';
 
 export interface SiteLayoutProps {
     children: ReactNode;
@@ -7,8 +8,13 @@ export interface SiteLayoutProps {
 export function SiteLayout({ children }: SiteLayoutProps) {
     return (
         <>
-            <img src="/img/logo.png" alt="Buy a Beater Logo" className="logo" />
-            <div className="container">
+            <div className="container" style={{ padding: 8 }}>
+                <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
+                    <img src="/img/logo.png" alt="Buy a Beater Logo" className="logo" />
+                    <div style={{ width: '50%', minWidth: 200 }}>
+                        <VehicleSearch />
+                    </div>
+                </div>
                 {children}
             </div>
             <footer className="footer">
