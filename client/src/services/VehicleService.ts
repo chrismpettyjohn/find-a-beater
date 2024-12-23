@@ -15,6 +15,24 @@ export class VehicleService {
     return response.json();
   }
 
+  async searchMakes(query: string): Promise<string[]> {
+    return this.fetchWithError(
+      `${this.baseUrl}/vehicles/makes?query=${query}`
+    );
+  }
+
+  async searchModels(make: string): Promise<string[]> {
+    return this.fetchWithError(
+      `${this.baseUrl}/vehicles/models?make=${make}`
+    );
+  }
+
+  async searchYears(make: string, model: string): Promise<number[]> {
+    return this.fetchWithError(
+      `${this.baseUrl}/vehicles/years?make=${make}&model=${model}`
+    );
+  }
+
   async getVehicleImages(params: VehicleIdentifier): Promise<string[]> {
     const { make, model, year } = params;
     return this.fetchWithError(
