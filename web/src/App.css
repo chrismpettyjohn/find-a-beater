@@ -33,13 +33,32 @@
             margin-bottom: 0.5rem;
         }
 
-
         .container {
-            max-width: 1600px;
             margin: 0 auto;
             padding: 0 1rem;
             flex: 1;
+            width: 100%;
         }
+
+        @media (min-width: 800px) {
+            .container {
+                max-width: 800px;
+            }
+        }
+
+        @media (min-width: 1080px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+
+        @media (min-width: 2000px) {
+            .container {
+                max-width: 1600px;
+            }
+        }
+
+
 
         .car-title {
             font-size: 2rem;
