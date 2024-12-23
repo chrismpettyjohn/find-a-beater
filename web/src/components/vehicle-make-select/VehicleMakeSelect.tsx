@@ -2,8 +2,14 @@ import React from 'react';
 import { useVehicle } from '../../contexts/VehicleContext';
 import '../vehicle-select-styles.css';
 
-const MAKES = ['Toyota', 'Honda', 'Ford', 'Chevrolet'];
-
+const MAKES = [
+  'Acura', 'Alfa Romeo', 'Aston Martin', 'Audi', 'Bentley', 'BMW', 'Buick',
+  'Cadillac', 'Chevrolet', 'Chrysler', 'Dodge', 'Ferrari', 'Fiat', 'Ford',
+  'Genesis', 'GMC', 'Honda', 'Hyundai', 'Infiniti', 'Jaguar', 'Jeep', 'Kia',
+  'Lamborghini', 'Land Rover', 'Lexus', 'Lincoln', 'Maserati', 'Mazda',
+  'McLaren', 'Mercedes-Benz', 'Mini', 'Mitsubishi', 'Nissan', 'Porsche',
+  'Ram', 'Rolls-Royce', 'Subaru', 'Tesla', 'Toyota', 'Volkswagen', 'Volvo'
+];
 export const VehicleMakeSelect: React.FC = () => {
   const { selectedVehicle, setSelectedVehicle } = useVehicle();
 
