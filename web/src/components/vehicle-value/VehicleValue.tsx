@@ -7,7 +7,7 @@ export function VehicleValue() {
     const { selectedVehicle } = useVehicle();
     const value = useVehicleValue({ make: selectedVehicle?.make ?? '', model: selectedVehicle?.model ?? '', year: selectedVehicle?.year ?? 0, zipCode: '12345' })
     const problems = useVehicleProblems({ make: selectedVehicle?.make ?? '', model: selectedVehicle?.model ?? '', year: selectedVehicle?.year ?? 0 })
-    const totalRepairCost = useMemo(() => problems.data?.issues?.reduce((total, item) => total + item.cost, 0), [problems.data]);
+    const totalRepairCost = useMemo(() => problems.data?.issues?.reduce((total, item) => total + item.cost, 0) ?? 0, [problems.data]);
     return (
         <div className="cost-summary">
             <div className="cost-card value">

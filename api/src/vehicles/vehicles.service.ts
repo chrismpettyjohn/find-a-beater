@@ -78,7 +78,7 @@ export class VehiclesService {
       - cost (number in USD): Estimated repair cost.
       - type (enum: "aesthetic" or "mechanical"): The category of the issue.
       - howToIdentify (string): Steps or signs to identify the issue.
-    - reliabilityScore (number 0–100): Overall vehicle reliability score.
+    - reliabilityScore (number 0–5): Overall vehicle reliability score.
     Ensure the response is a valid JSON object.
   `);
   }
