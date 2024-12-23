@@ -1,14 +1,14 @@
 
-  :root {
-            --bg-primary: #1a1f2e;
-            --bg-secondary: #2a2f3e;
-            --text-primary: #e1e1e6;
-            --text-secondary: #9ca3af;
-            --accent: #3b82f6;
-            --danger: #ef4444;
-            --success: #22c55e;
-            --warning: #eab308;
+        :root {
+            --bg-primary: #1c1c1e;       /* Carbon Gray */
+            --bg-secondary: #2c2c2e;    /* Slate Gray */
+            --text-primary: #f2f2f2;    /* Light Gray */
+            --text-secondary: #b8b8b8;  /* Cool Slate */
+            --accent: #ffb400;          /* Warm Amber */
+            --danger: #d62828;          /* Bright Red */
+            --success: #4caf50
         }
+
 
         * {
             margin: 0;
@@ -76,7 +76,7 @@
         .cost-summary {
             grid-column: span 12;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin-bottom: 1rem;
         }
@@ -100,6 +100,7 @@
 
         .cost-label {
             font-size: 1.25rem;
+            font-weight: 800;
             color: rgba(255, 255, 255, 0.9);
         }
 
