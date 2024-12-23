@@ -118,7 +118,7 @@ export const useVehicleTestimonies = (params: VehicleIdentifier | null) => {
   );
 };
 
-export const useVehicleAnalysis = () => {
+export const useVehicleAnalysis = (params: VehicleIdentifier & { prompt: string }) => {
   return useSWRMutation<
     VehicleAnalysis, // Type of the data returned
     Error, // Type of the error
