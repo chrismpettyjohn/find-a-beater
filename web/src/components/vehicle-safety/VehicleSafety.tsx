@@ -10,7 +10,7 @@ export function VehicleSafety() {
             <h2 className="section-title">Safety & Reliability</h2>
             <div className="ratings-container">
                 <div className="rating-item">
-                    <div className="rating-value">{safety.data?.safetyRating ? `${safety.data?.safetyRating}/5` : '-'}</div>
+                    <div className="rating-value">{safety.data?.safetyRating || '-'}</div>
                     <div>Safety Rating</div>
                 </div>
                 <div className="rating-item">
@@ -18,7 +18,7 @@ export function VehicleSafety() {
                     <div>Crash Survival Rate</div>
                 </div>
                 <div className="rating-item">
-                    <div className="rating-value">{problems.data?.reliabilityScore ? `${problems.data?.reliabilityScore}/5` : '-'}</div>
+                    <div className="rating-value">{problems.data?.reliabilityScore || '-'}</div>
                     <div>Reliability Score</div>
                 </div>
             </div>

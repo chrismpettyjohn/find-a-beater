@@ -8,6 +8,10 @@ export interface VehicleSpecs {
   weight: number;
   horsepower: number;
   torque: number;
+  engine: string;
+  cylinders: number;
+  zeroToSixty: number;
+  sixtyToOneTwenty: number;
 }
 
 export interface VehicleSafety {

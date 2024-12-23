@@ -18,8 +18,12 @@ export function VehicleSpecs() {
             <h2 className="section-title">Specifications</h2>
             <table className="specs-table">
                 <tr>
-                    <td>Weight</td>
-                    <td>{formatNumber(specs.data?.weight ?? 0, 0)}lb</td>
+                    <td>Engine</td>
+                    <td>{specs.data?.engine}</td>
+                </tr>
+                <tr>
+                    <td>Cylinders</td>
+                    <td>{specs.data?.cylinders}</td>
                 </tr>
                 <tr>
                     <td>Horsepower</td>
@@ -30,8 +34,20 @@ export function VehicleSpecs() {
                     <td>{specs.data?.torque ?? 0}lb</td>
                 </tr>
                 <tr>
+                    <td>Weight</td>
+                    <td>{formatNumber(specs.data?.weight ?? 0, 0)}lb</td>
+                </tr>
+                <tr>
                     <td>HP/Weight</td>
                     <td>{hpWeight} hp/lb</td>
+                </tr>
+                <tr>
+                    <td>0-60mph</td>
+                    <td>{specs.data?.zeroToSixty} secs</td>
+                </tr>
+                <tr>
+                    <td>60-120mph</td>
+                    <td>{specs.data?.sixtyToOneTwenty} secs</td>
                 </tr>
             </table>
         </div>

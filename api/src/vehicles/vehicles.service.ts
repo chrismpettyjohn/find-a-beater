@@ -37,6 +37,10 @@ export class VehiclesService {
       - weight (number)
       - horsepower (number)
       - torque (number)
+      - engine (string) (engine name)
+      - cylinders (number)
+      - zeroToSixty (number)
+      - sixtyToOneTwenty (number)
     `);
   }
 

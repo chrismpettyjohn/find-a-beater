@@ -13,8 +13,8 @@ export function VehicleAnalyze() {
     return (
         <div className="chat-row">
             <div className="chat-section">
-                <h2 className="section-title">Ask About This Car</h2>
-                <textarea className="chat-input" placeholder="Ask anything about this car..." value={prompt} onChange={onChangePrompt}></textarea>
+                <h2 className="section-title">Describe the car</h2>
+                <textarea className="chat-input" placeholder="Tell us more about the condition of the car.  Any weird noises, scratches or other issues?" value={prompt} onChange={onChangePrompt}></textarea>
             </div>
             <div className="chat-section">
                 <h2 className="section-title">Response Summary</h2>
