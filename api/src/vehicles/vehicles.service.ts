@@ -52,16 +52,15 @@ export class VehiclesService {
   async getVehicleTestimonies(params: VehicleIdentifier): Promise<VehicleTestimony[]> {
     return this.openAIService.generateCompletion(`
       Generate 3 realistic owner testimonies for a ${params.year} ${params.make} ${params.model}.
-      Base these on common experiences, known issues, and typical ownership patterns, focusing on problems that a DIY enthusiast would need to know. Use forum posts and Reddit exclusively as inspiration.
-      Include different owner types (commuter, enthusiast, family, etc.).
-      Return as a JSON array with the following fields:
-      - ownerType (string): The type of owner (e.g., commuter, enthusiast, family).
-      - experience (string): A detailed testimony of the ownership experience.
-      - rating (number 1-5): Overall satisfaction rating.
-      - pros (array of strings): Positive aspects of ownership.
-      - cons (array of strings): Negative aspects of ownership, especially DIY challenges.
-      Ensure the response is formatted as a valid JSON array.
-    `);
+      Focus strictly on mechanical problems, DIY resolutions, and associated costs. Exclude any discussion about fuel economy, space, or consumer-focused aspects.
+      Use forum posts and Reddit exclusively as inspiration. Ensure the testimonies highlight:
+      - Specific problems encountered
+      - Steps taken for resolution (DIY where applicable)
+      - Actual or estimated repair costs
+      Return the response as a JSON array with the following fields:
+      - experience (string): A detailed account of the problem and resolution. Max 125 characters.
+      Ensure the response is formatted as valid JSON.
+  `);
   }
 
   async getVehicleProblems(params: VehicleIdentifier, mileage: number, zipCode: number): Promise<VehicleProblemReport> {

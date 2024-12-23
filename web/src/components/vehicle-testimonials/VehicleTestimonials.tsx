@@ -1,4 +1,5 @@
 import { useVehicle } from "../../contexts/VehicleContext";
+import { formatNumber } from "../../hooks/formatNumber";
 import { useVehicleTestimonies } from "../../hooks/useVehicle";
 
 export function VehicleTestimonials() {
@@ -11,21 +12,7 @@ export function VehicleTestimonials() {
                 {
                     testimonials.data?.map((_, i) => (
                         <div className="testimonial" key={`testimonial_${i}`}>
-                            {_.experience}
-                            <p><b>Pros:</b></p>
-                            {
-                                _.pros.map((pro, pi) => (
-                                    <li key={`pro_${pi}`}>{pro}</li>
-                                ))
-                            }
-                            <p><b>Cons:</b></p>
-                            {
-                                _.cons.map((con, ci) => (
-                                    <li key={`con_${ci}`}>{con}</li>
-                                ))
-                            }
-                            <p><b>Rating:</b></p>
-                            {Array.from({ length: _.rating }, () => '*').join('')}
+                            <p>{_.experience}</p>
                         </div>
                     ))
                 }

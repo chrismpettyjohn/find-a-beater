@@ -16,11 +16,7 @@ export interface VehicleSafety {
 }
 
 export interface VehicleTestimony {
-  ownerType: string;
   experience: string;
-  rating: number;
-  pros: string[];
-  cons: string[];
 }
 
 export interface VehicleProblem {
