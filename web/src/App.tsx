@@ -14,12 +14,12 @@ function AppContent() {
     <SiteLayout>
       <VehicleValue />
       <div className="main-grid">
+        <VehicleSafety />
         <VehicleImages />
         <VehicleSpecs />
-        <VehicleSafety />
-        <VehicleAnalyze />
         <VehicleProblems />
         <VehicleTestimonials />
+        <VehicleAnalyze />
       </div>
     </SiteLayout>
   );
