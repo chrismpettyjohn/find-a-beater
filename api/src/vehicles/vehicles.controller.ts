@@ -1,62 +1,49 @@
-import { Controller, Get, Query, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Query, Body } from '@nestjs/common';
 import { VehiclesService } from './vehicles.service';
-import { VehicleQueryDto } from './dto/vehicle-query.dto';
+import {
+  VehicleIdentifier,
+  VehicleSpecs,
+  VehicleSafety,
+  VehicleTestimony,
+  VehicleAnalysis,
+} from '@find-a-beater/client';
 
 @Controller('vehicles')
 export class VehiclesController {
-  constructor(private readonly vehiclesService: VehiclesService) { }
+  constructor(private readonly vehiclesService: VehiclesService) {}
 
   @Get('images')
-  async getVehicleImages(@Query() query: VehicleQueryDto) {
-    return this.vehiclesService.getVehicleImages(query.make, query.model, query.year);
+  getVehicleImages(@Query() params: VehicleIdentifier): Promise<string[]> {
+    return this.vehiclesService.getVehicleImages(params);
   }
 
   @Get('value')
-  async getEstimatedValue(@Query() query: VehicleQueryDto) {
-    return this.vehiclesService.getEstimatedValue(
-      query.make,
-      query.model,
-      query.year,
-      query.zipCode,
-    );
+  getVehicleValue(
+    @Query() params: VehicleIdentifier & { zipCode: string }
+  ): Promise<{ value: number }> {
+    return this.vehiclesService.getVehicleValue(params);
   }
 
   @Get('specs')
-  async getVehicleSpecs(@Query() query: VehicleQueryDto) {
-    return this.vehiclesService.getVehicleSpecs(query.make, query.model, query.year);
+  getVehicleSpecs(@Query() params: VehicleIdentifier): Promise<VehicleSpecs> {
+    return this.vehiclesService.getVehicleSpecs(params);
   }
 
   @Get('safety')
-  async getSafetyRating(@Query() query: VehicleQueryDto) {
-    return this.vehiclesService.getSafetyRating(query.make, query.model, query.year);
-  }
-
-  @Post('analyze')
-  async getCustomAnalysis(
-    @Query() query: VehicleQueryDto,
-    @Body() body: { prompt: string },
-  ) {
-    return this.vehiclesService.getCustomAnalysis(
-      query.make,
-      query.model,
-      query.year,
-      body.prompt,
-    );
-  }
-
-  @Get('problems')
-  async getExpectedProblems(@Query() query: VehicleQueryDto) {
-    return this.vehiclesService.getExpectedProblems(
-      query.make,
-      query.model,
-      query.year,
-      query.mileage,
-      query.zipCode,
-    );
+  getVehicleSafety(@Query() params: VehicleIdentifier): Promise<VehicleSafety> {
+    return this.vehiclesService.getVehicleSafety(params);
   }
 
   @Get('testimonies')
-  async getOwnerTestimonies(@Query() query: VehicleQueryDto) {
-    return this.vehiclesService.getOwnerTestimonies(query.make, query.model, query.year);
+  getVehicleTestimonies(@Query() params: VehicleIdentifier): Promise<VehicleTestimony[]> {
+    return this.vehiclesService.getVehicleTestimonies(params);
+  }
+
+  @Post('analyze')
+  analyzeVehicle(
+    @Query() params: VehicleIdentifier,
+    @Body() body: { prompt: string }
+  ): Promise<VehicleAnalysis> {
+    return this.vehiclesService.analyzeVehicle(params, body.prompt);
   }
 }
