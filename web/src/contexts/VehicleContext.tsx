@@ -1,21 +1,19 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-interface Vehicle {
-  id: string;
+type Vehicle = {
   make: string;
   model: string;
   year: number;
-  label: string;
-}
+};
 
-interface VehicleContextType {
+type VehicleContextType = {
   selectedVehicle: Vehicle | null;
   setSelectedVehicle: (vehicle: Vehicle | null) => void;
-}
+};
 
 const VehicleContext = createContext<VehicleContextType | undefined>(undefined);
 
-export const VehicleProvider = ({ children }: { children: ReactNode }) => {
+export const VehicleProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
 
   return (

@@ -7,22 +7,33 @@ import { VehicleSafety } from './components/vehicle-safety/VehicleSafety'
 import { VehicleSpecs } from './components/vehicle-specs/VehicleSpecs'
 import { VehicleTestimonials } from './components/vehicle-testimonials/VehicleTestimonials'
 import { VehicleValue } from './components/vehicle-value/VehicleValue'
-import { VehicleProvider } from './contexts/VehicleContext'
+import { useVehicle, VehicleProvider } from './contexts/VehicleContext'
 
 function AppContent() {
+  const { selectedVehicle } = useVehicle();
+  const isValidVehicle = selectedVehicle?.make && selectedVehicle?.model && selectedVehicle?.year
+
   return (
     <SiteLayout>
-      <VehicleValue />
-      <div className="main-grid">
-        <VehicleSafety />
-        <VehicleImages />
-        <VehicleSpecs />
-        <VehicleProblems />
-        <VehicleTestimonials />
-        <VehicleAnalyze />
-      </div>
+      {
+        isValidVehicle
+          ? (
+            <>
+              <VehicleValue />
+              <div className="main-grid">
+                <VehicleSafety />
+                <VehicleImages />
+                <VehicleSpecs />
+                <VehicleProblems />
+                <VehicleTestimonials />
+                <VehicleAnalyze />
+              </div>
+            </>
+          )
+          : null
+      }
     </SiteLayout>
-  );
+  )
 }
 
 function App() {
