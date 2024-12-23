@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { SiteLayout } from './components/site-layout/SiteLayout'
+import { VehicleAnalyze } from './components/vehicle-analyze/VehicleAnalyze'
+import { VehicleImages } from './components/vehicle-images/VehicleImages'
+import { VehicleProblems } from './components/vehicle-problems/VehicleProblems'
+import { VehicleSafety } from './components/vehicle-safety/VehicleSafety'
+import { VehicleSpecs } from './components/vehicle-specs/VehicleSpecs'
+import { VehicleTestimonials } from './components/vehicle-testimonials/VehicleTestimonials'
+import { VehicleValue } from './components/vehicle-value/VehicleValue'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <SiteLayout>
+      <h1 className="car-title">2018 Toyota Camry SE</h1>
+      <VehicleValue />
+      <div className="main-grid">
+        <VehicleImages />
+        <VehicleSpecs />
+        <VehicleSafety />
+        <VehicleAnalyze />
+        <VehicleProblems />
+        <VehicleTestimonials />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </SiteLayout>
   )
 }
 
