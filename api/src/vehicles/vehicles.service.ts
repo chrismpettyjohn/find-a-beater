@@ -8,19 +8,16 @@ import {
   VehicleProblemReport,
 } from '@find-a-beater/client';
 import { OpenAIService } from '../shared/providers/openai/openai.service';
+import { GoogleService } from '../shared/providers/google/google.service';
 
 @Injectable()
 export class VehiclesService {
 
-  constructor(private readonly openAIService: OpenAIService) { }
+  constructor(private readonly googleService: GoogleService, private readonly openAIService: OpenAIService) { }
 
 
   async getVehicleImages(params: VehicleIdentifier): Promise<string[]> {
-    // Implementation
-    return [
-      'https://example.com/images/SL500-Mercedes-1995-1.jpg',
-      'https://example.com/images/SL500-Mercedes-1995-2.jpg',
-    ];
+    return this.googleService.getCarImages(params.make, params.model, params.year);
   }
 
   async getVehicleValue(

@@ -14,8 +14,10 @@ export class VehiclesController {
   constructor(private readonly vehiclesService: VehiclesService) { }
 
   @Get('images')
-  getVehicleImages(@Query() params: VehicleIdentifier): Promise<string[]> {
-    return this.vehiclesService.getVehicleImages(params);
+  async getVehicleImages(@Query() params: VehicleIdentifier): Promise<string[]> {
+    const body = await this.vehiclesService.getVehicleImages(params);
+    console.log(body)
+    return body;
   }
 
   @Get('value')

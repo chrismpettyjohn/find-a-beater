@@ -16,28 +16,4 @@ export class NHTSAService {
       throw new Error(`NHTSA API error: ${error.message}`);
     }
   }
-
-  async getRecalls(make: string, model: string, year: number) {
-    try {
-      const response = await axios.get(
-        `${this.baseUrl}/recalls/recallsByVehicle?make=${make}&model=${model}&modelYear=${year}&format=json`
-      );
-      return response.data.Results;
-    } catch (error) {
-      console.log(error);
-      throw new Error(`NHTSA API error: ${error.message}`);
-    }
-  }
-
-  async getComplaints(make: string, model: string, year: number) {
-    try {
-      const response = await axios.get(
-        `${this.baseUrl}/complaints/ComplaintsByVehicle?make=${make}&model=${model}&modelYear=${year}&format=json`
-      );
-      return response.data.Results;
-    } catch (error) {
-      console.log(error);
-      throw new Error(`NHTSA API error: ${error.message}`);
-    }
-  }
 }

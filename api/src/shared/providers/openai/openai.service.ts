@@ -1,16 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import OpenAI from 'openai';
+import { OPENAI_API_KEY } from '../../../app.const';
 
 @Injectable()
 export class OpenAIService {
-  private readonly openai: OpenAI;
-
-  constructor(private configService: ConfigService) {
-    this.openai = new OpenAI({
-      apiKey: this.configService.get<string>('OPENAI_API_KEY'),
-    });
-  }
+  private readonly openai: OpenAI = new OpenAI({ apiKey: OPENAI_API_KEY })
 
   async generateCompletion(prompt: string): Promise<any> {
     try {
