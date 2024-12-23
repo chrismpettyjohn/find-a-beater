@@ -6,11 +6,12 @@ import {
   VehicleSafety,
   VehicleTestimony,
   VehicleAnalysis,
+  VehicleProblemReport,
 } from '@find-a-beater/client';
 
 @Controller('vehicles')
 export class VehiclesController {
-  constructor(private readonly vehiclesService: VehiclesService) {}
+  constructor(private readonly vehiclesService: VehiclesService) { }
 
   @Get('images')
   getVehicleImages(@Query() params: VehicleIdentifier): Promise<string[]> {
@@ -32,6 +33,11 @@ export class VehiclesController {
   @Get('safety')
   getVehicleSafety(@Query() params: VehicleIdentifier): Promise<VehicleSafety> {
     return this.vehiclesService.getVehicleSafety(params);
+  }
+
+  @Get('problems')
+  getVehicleProblems(@Query() params: VehicleIdentifier, @Query('zipCode') zipCode: number, @Query('mileage') mileage: number): Promise<VehicleProblemReport> {
+    return this.vehiclesService.getVehicleProblems(params, mileage, zipCode);
   }
 
   @Get('testimonies')

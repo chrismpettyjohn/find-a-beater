@@ -23,6 +23,19 @@ export interface VehicleTestimony {
   cons: string[];
 }
 
+export interface VehicleProblem {
+  issue: string;
+  probability: number;
+  cost: number;
+  type: string;
+  howToIdentify: string;
+}
+
+export interface VehicleProblemReport {
+  issues: VehicleProblem[];
+  reliabilityScore: number;
+}
+
 export interface VehicleAnalysis {
   make: string;
   model: string;

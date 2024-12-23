@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { VehicleSearch } from '../vehicle-search';
+import { VehicleSearch } from '../vehicle-search/VehicleSearch';
 
 export interface SiteLayoutProps {
     children: ReactNode;

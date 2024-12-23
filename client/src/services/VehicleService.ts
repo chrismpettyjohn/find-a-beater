@@ -1,4 +1,4 @@
-import { VehicleAnalysis, VehicleIdentifier, VehicleSafety, VehicleSpecs, VehicleTestimony } from "../types/vehicle";
+import { VehicleAnalysis, VehicleIdentifier, VehicleProblemReport, VehicleSafety, VehicleSpecs, VehicleTestimony } from "../types/vehicle";
 
 export class VehicleService {
   private baseUrl: string;
@@ -40,6 +40,13 @@ export class VehicleService {
     const { make, model, year } = params;
     return this.fetchWithError(
       `${this.baseUrl}/vehicles/safety?make=${make}&model=${model}&year=${year}`
+    );
+  }
+
+  async getVehicleProblems(params: VehicleIdentifier): Promise<VehicleProblemReport> {
+    const { make, model, year } = params;
+    return this.fetchWithError(
+      `${this.baseUrl}/vehicles/problems?make=${make}&model=${model}&year=${year}`
     );
   }
 

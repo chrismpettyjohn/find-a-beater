@@ -6,7 +6,9 @@ import type {
   VehicleAnalysis,
   VehicleSafety,
   VehicleSpecs,
-  VehicleTestimony
+  VehicleTestimony,
+  VehicleProblem,
+  VehicleProblemReport
 } from '@find-a-beater/client';
 
 const service = new VehicleService();
@@ -90,6 +92,19 @@ export const useVehicleSafety = (params: VehicleIdentifier | null) => {
     }
   );
 };
+
+export const useVehicleProblems = (params: VehicleIdentifier | null) => {
+  const key = params ? createKey('vehicle/problems', params) : null;
+  return useSWR<VehicleProblemReport>(
+    key,
+    () => fetcher(() => service.getVehicleProblems(params!)),
+    {
+      revalidateOnFocus: false,
+      ...retryConfig
+    }
+  );
+};
+
 
 export const useVehicleTestimonies = (params: VehicleIdentifier | null) => {
   const key = params ? createKey('vehicle/testimonies', params) : null;

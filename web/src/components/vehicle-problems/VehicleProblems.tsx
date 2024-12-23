@@ -1,4 +1,9 @@
+import { useVehicle } from "../../contexts/VehicleContext";
+import { useVehicleProblems } from "../../hooks/useVehicle";
+
 export function VehicleProblems() {
+    const { selectedVehicle } = useVehicle();
+    const problems = useVehicleProblems({ make: selectedVehicle?.make ?? '', model: selectedVehicle?.model ?? '', year: selectedVehicle?.year ?? 0 })
     return (
         <div className="section problems-section">
             <h2 className="section-title">Expected Problems</h2>
@@ -8,21 +13,15 @@ export function VehicleProblems() {
                     <th>Probability</th>
                     <th>Cost</th>
                 </tr>
-                <tr>
-                    <td>Timing Belt</td>
-                    <td>75%</td>
-                    <td>$800</td>
-                </tr>
-                <tr>
-                    <td>Brakes</td>
-                    <td>60%</td>
-                    <td>$400</td>
-                </tr>
-                <tr>
-                    <td>Suspension</td>
-                    <td>45%</td>
-                    <td>$600</td>
-                </tr>
+                {
+                    problems.data?.issues?.map(_ => (
+                        <tr key={`issue_${_.issue}`}>
+                            <td>{_.issue}</td>
+                            <td>{_.probability * 100}%</td>
+                            <td>${_.cost}</td>
+                        </tr>
+                    ))
+                }
             </table>
         </div>
     )
