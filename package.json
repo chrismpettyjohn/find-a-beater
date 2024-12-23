@@ -1,0 +1,22 @@
+{
+  "name": "find-a-beater",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm -r run dev",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "test": "pnpm -r run test",
+    "clean": "pnpm -r run clean",
+    "web": "pnpm --filter @find-a-beater/web",
+    "api": "pnpm --filter @find-a-beater/api"
+  },
+  "workspaces": [
+    "web",
+    "api"
+  ]
+}
