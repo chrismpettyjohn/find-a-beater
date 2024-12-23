@@ -2,7 +2,6 @@ export interface VehicleSpecs {
   weight: number;
   horsepower: number;
   torque: number;
-  hpWeightRatio: number;
 }
 
 export interface ExpectedProblem {

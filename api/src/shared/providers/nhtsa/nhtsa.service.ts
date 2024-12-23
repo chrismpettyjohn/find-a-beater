@@ -5,20 +5,26 @@ import axios from 'axios';
 export class NHTSAService {
   private readonly baseUrl = 'https://api.nhtsa.gov/apis';
 
-  async getVehicleInfo(vin: string) {
+  async getVehicleInfo(make: string, model: string, year: number) {
     try {
-      const response = await axios.get(`${this.baseUrl}/vehicles/DecodeVin/${vin}?format=json`);
+      const response = await axios.get(
+        `${this.baseUrl}/vehicles/GetModelsForMakeYear/make/${make}/modelyear/${year}?format=json`
+      );
       return response.data.Results;
     } catch (error) {
+      console.log(error);
       throw new Error(`NHTSA API error: ${error.message}`);
     }
   }
 
-  async getRecalls(vin: string) {
+  async getRecalls(make: string, model: string, year: number) {
     try {
-      const response = await axios.get(`${this.baseUrl}/recalls/recallsByVehicle/${vin}?format=json`);
+      const response = await axios.get(
+        `${this.baseUrl}/recalls/recallsByVehicle?make=${make}&model=${model}&modelYear=${year}&format=json`
+      );
       return response.data.Results;
     } catch (error) {
+      console.log(error);
       throw new Error(`NHTSA API error: ${error.message}`);
     }
   }
@@ -30,6 +36,7 @@ export class NHTSAService {
       );
       return response.data.Results;
     } catch (error) {
+      console.log(error);
       throw new Error(`NHTSA API error: ${error.message}`);
     }
   }

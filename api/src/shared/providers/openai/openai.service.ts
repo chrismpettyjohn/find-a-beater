@@ -12,18 +12,24 @@ export class OpenAIService {
     });
   }
 
-  async generateCompletion(prompt: string) {
+  async generateCompletion(prompt: string): Promise<any> {
     try {
       const completion = await this.openai.chat.completions.create({
-        messages: [{ role: 'user', content: prompt }],
-        model: 'gpt-4-turbo-preview',
+        messages: [{ role: 'user', content: `JSON response should be top level, not nested within any field.  See prompt: ${prompt}` }],
+        model: 'gpt-3.5-turbo',
       });
 
-      return completion.choices[0].message.content;
+      const rawContent = completion.choices[0].message.content;
+      const sanitizedContent = rawContent.replace(/\n/g, ' ').trim();
+
+      try {
+        return JSON.parse(sanitizedContent)
+      } catch (parseError) {
+        throw new Error(`Failed to parse response as JSON: ${sanitizedContent}`);
+      }
     } catch (error) {
       throw new Error(`OpenAI API error: ${error.message}`);
     }
   }
 
-  // Add more methods as needed for specific OpenAI features
 }

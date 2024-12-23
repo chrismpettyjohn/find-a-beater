@@ -4,7 +4,7 @@ import { VehicleQueryDto } from './dto/vehicle-query.dto';
 
 @Controller('vehicles')
 export class VehiclesController {
-  constructor(private readonly vehiclesService: VehiclesService) {}
+  constructor(private readonly vehiclesService: VehiclesService) { }
 
   @Get('images')
   async getVehicleImages(@Query() query: VehicleQueryDto) {
@@ -29,16 +29,6 @@ export class VehiclesController {
   @Get('safety')
   async getSafetyRating(@Query() query: VehicleQueryDto) {
     return this.vehiclesService.getSafetyRating(query.make, query.model, query.year);
-  }
-
-  @Get('crash-survival')
-  async getCrashSurvivalRating(@Query() query: VehicleQueryDto) {
-    return this.vehiclesService.getCrashSurvivalRating(query.make, query.model, query.year);
-  }
-
-  @Get('reliability')
-  async getReliabilityScore(@Query() query: VehicleQueryDto) {
-    return this.vehiclesService.getReliabilityScore(query.make, query.model, query.year);
   }
 
   @Post('analyze')
