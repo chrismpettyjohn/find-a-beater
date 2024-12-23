@@ -16,7 +16,8 @@
     "api": "pnpm --filter @find-a-beater/api"
   },
   "workspaces": [
-    "web",
-    "api"
+    "api",
+    "client",
+    "web"
   ]
 }
