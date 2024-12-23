@@ -131,6 +131,9 @@ importers:
 
   web:
     dependencies:
+      '@find-a-beater/client':
+        specifier: workspace:*
+        version: link:../client
       '@tanstack/react-query':
         specifier: ^5.17.9
         version: 5.62.8(react@18.3.1)

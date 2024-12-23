@@ -1,3 +1,5 @@
+import { VehicleAnalysis, VehicleIdentifier, VehicleSafety, VehicleSpecs, VehicleTestimony } from "../types/vehicle";
+
 export class VehicleService {
   private baseUrl: string;
 
